@@ -13,14 +13,14 @@
   <div id="app">
     <div>
       使用说明：
-      1.依次点击四位数字，然后按回车键
+      依次点击四位数字，然后按回车键或者获取键
     </div>
     <div v-show="numbers.length > 0">
       您点击了：
-      <span v-for="item in numbers" :key="item">{{ item }}</span>
+      <span v-for="item in numbers" :key="item">{{ item }}-</span>
     </div>
     <section class="flex-s">
-      <div style="width: 500px;">
+      <div style="width: 350px;">
         <div class="flex">
 
           <div class="reset" @click="reset">重置</div>
@@ -32,7 +32,7 @@
 
       </div>
       <ul>
-        <li v-for="item in 9" :key="item" @click="clickNum(item)"
+        <li v-for="item in 13" :key="item" @click="clickNum(item)"
           v-bind:class="[numbers.length > 0 && numbers.includes(item)?'oragle' : '']">{{ item }}</li>
       </ul>
     </section>
@@ -60,6 +60,7 @@
     },
     methods: {
       getformula() {
+        this.message = []
         this.numbers.length === 4 && this.get24(this.numbers[0], this.numbers[1], this.numbers[2], this.numbers[3])
       },
       reset() {
@@ -145,7 +146,6 @@
   }
 .flex-s {
   display: flex;
-  align-items: center;
   justify-content: flex-start;
 }
   ul,
@@ -161,7 +161,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     /* margin: 0 auto; */
-    width: 470px;
+    width: 660px;
     /* transform: translateY(50%); */
   }
 
@@ -180,7 +180,7 @@
     cursor: pointer;
   }
 
-  li:nth-child(3n) {
+  li:nth-child(4n) {
     margin-right: 0;
   }
 
